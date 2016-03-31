@@ -28,7 +28,7 @@ class CRM
     puts '[1] Add a new contact'
     puts '[2] Modify an exisiting contacts'
     puts '[3] Delete a contact'
-    puts '[4] Display all the contacts'
+    puts '[4] Display contacts'
     puts '[5] Search by attribute'
     puts '[6] Exit'
     puts 'Enter a number'
@@ -36,13 +36,18 @@ class CRM
 
   def call_option(user_selected)
     # Fill this in
-      case user_selected
-      when 1 then add_new_contact
-      when 2 then modify_existing_contact
-      when 3 then delete_contact
-      when 4 then display_contacts
-      when 5 then search_by_attribute
-      when 6 then abort
+      if 1 == user_selected
+      add_new_contact
+      elsif 2 == user_selected
+      modify_existing_contact
+      elsif 3 == user_selected
+      delete_contact
+      elsif 4 == user_selected
+      display_contacts
+      elsif 5 == user_selected
+      search_by_attribute
+      elsif 6 == user_selected
+      abort
       end
   end
 
@@ -95,18 +100,32 @@ class CRM
     contact.delete
   end
 
-  def display_all_contacts
-    # Fill this in
-    # HINT: Make use of the display_contacts method
-    display_contact.(Contact.all)
 
-  end
 
   def search_by_attribute
     # Fill this in
     # HINT: Make use of the display_contacts method
     puts 'Which arribute would you to search? 1. First name 2. Last name 3. email 4. note'
     attribute_selection = gets.to_i
+
+    puts 'What is the search term?'
+    term = gets.chomp
+
+    if attribute_selection == 1
+    selection_1 =  Contact.find_by("first_name", term)
+    elsif attribute_selection == 2
+    selection_1 =  Contact.find_by("last_name", term)
+    elsif attribute_selection == 3
+    selection_1 =  Contact.find_by("email", term)
+    elsif attrubute_selection == 4
+    selection_1 = Contact.find_by("note", term)
+    end
+
+    selection_1.each do |contact|
+      puts "#{contact.first_name} #{contact.last_name} #{contact.email} #{contact.note}"
+
+    end
+
   end
 
   # This method should accept as its argument an array of contacts

@@ -62,7 +62,7 @@ attr_accessor :first_name, :last_name, :email, :note
         true
       elsif attribute == 'last_name' && person.last_name == value
         true
-      elsif attrubite == 'email' && person.email == value
+      elsif attribute == 'email' && person.email == value
         true
       elsif attribute == 'note' && note.email == value
     end
