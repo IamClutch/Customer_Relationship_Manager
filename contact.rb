@@ -105,7 +105,7 @@ end
   # It should delete the current instance of contact from memory
   def delete
     # Fill this in
-    @@contacts.delete()
+    @@contacts.delete(self)
   end
 end
 
